@@ -1,0 +1,426 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ─── Auth ───────────────────────────────────────────────────────────────────
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String?
+  passwordHash  String?
+  emailVerified DateTime?
+  image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  memberships Membership[]
+  sessions    Session[]
+  accounts    Account[]
+
+  @@map("users")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+// ─── Tenancy ─────────────────────────────────────────────────────────────────
+
+model Organization {
+  id        String   @id @default(cuid())
+  name      String
+  slug      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  memberships         Membership[]
+  properties          Property[]
+  owners              Owner[]
+  tenants             Tenant[]
+  leases              Lease[]
+  maintenanceRequests MaintenanceRequest[]
+  documents           Document[]
+  auditLogs           AuditLog[]
+  notifications       Notification[]
+  rentCharges         RentCharge[]
+  payments            Payment[]
+
+  @@map("organizations")
+}
+
+enum MemberRole {
+  OWNER
+  PROPERTY_MANAGER
+  MAINTENANCE
+  PROPERTY_OWNER
+  TENANT
+}
+
+model Membership {
+  id             String     @id @default(cuid())
+  organizationId String
+  userId         String
+  role           MemberRole
+  ownerId        String?
+  tenantId       String?
+  createdAt      DateTime   @default(now())
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([organizationId, userId])
+  @@map("memberships")
+}
+
+// ─── Properties ──────────────────────────────────────────────────────────────
+
+enum PropertyType {
+  RESIDENTIAL
+  COMMERCIAL
+  MIXED
+}
+
+enum PropertyStatus {
+  ACTIVE
+  INACTIVE
+}
+
+model Property {
+  id             String         @id @default(cuid())
+  organizationId String
+  name           String
+  address        String
+  city           String?
+  state          String?
+  zip            String?
+  propertyType   PropertyType   @default(RESIDENTIAL)
+  status         PropertyStatus @default(ACTIVE)
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+
+  organization        Organization         @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  units               Unit[]
+  propertyOwners      PropertyOwner[]
+  maintenanceRequests MaintenanceRequest[]
+
+  @@map("properties")
+}
+
+// ─── Units ───────────────────────────────────────────────────────────────────
+
+enum UnitStatus {
+  VACANT
+  OCCUPIED
+  MAINTENANCE
+  UNAVAILABLE
+}
+
+model Unit {
+  id          String     @id @default(cuid())
+  propertyId  String
+  unitNumber  String
+  bedrooms    Int        @default(1)
+  bathrooms   Decimal    @default(1)
+  monthlyRent Decimal
+  status      UnitStatus @default(VACANT)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  property            Property             @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  leases              Lease[]
+  maintenanceRequests MaintenanceRequest[]
+
+  @@unique([propertyId, unitNumber])
+  @@map("units")
+}
+
+// ─── Owners ──────────────────────────────────────────────────────────────────
+
+model Owner {
+  id             String   @id @default(cuid())
+  organizationId String
+  name           String
+  email          String
+  phone          String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization   Organization    @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  propertyOwners PropertyOwner[]
+
+  @@map("owners")
+}
+
+model PropertyOwner {
+  id                  String  @id @default(cuid())
+  propertyId          String
+  ownerId             String
+  ownershipPercentage Decimal @default(100)
+
+  property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  owner    Owner    @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+
+  @@unique([propertyId, ownerId])
+  @@map("property_owners")
+}
+
+// ─── Tenants (domain entity, not the SaaS org) ───────────────────────────────
+
+enum TenantStatus {
+  ACTIVE
+  INACTIVE
+}
+
+model Tenant {
+  id             String       @id @default(cuid())
+  organizationId String
+  name           String
+  email          String
+  phone          String?
+  status         TenantStatus @default(ACTIVE)
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  organization        Organization         @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  leases              Lease[]
+  maintenanceRequests MaintenanceRequest[]
+
+  @@map("tenants")
+}
+
+// ─── Leases ──────────────────────────────────────────────────────────────────
+
+enum LeaseStatus {
+  DRAFT
+  PENDING_SIGNATURE
+  ACTIVE
+  EXPIRING
+  ENDED
+  TERMINATED
+}
+
+model Lease {
+  id              String      @id @default(cuid())
+  organizationId  String
+  unitId          String
+  tenantId        String
+  startDate       DateTime
+  endDate         DateTime
+  monthlyRent     Decimal
+  securityDeposit Decimal     @default(0)
+  status          LeaseStatus @default(DRAFT)
+  documentKey     String?
+  notes           String?
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  unit         Unit         @relation(fields: [unitId], references: [id])
+  tenant       Tenant       @relation(fields: [tenantId], references: [id])
+  rentCharges  RentCharge[]
+  documents    Document[]
+
+  @@map("leases")
+}
+
+// ─── Rent ─────────────────────────────────────────────────────────────────────
+
+enum RentChargeStatus {
+  PENDING
+  PARTIALLY_PAID
+  PAID
+  OVERDUE
+}
+
+model RentCharge {
+  id             String           @id @default(cuid())
+  organizationId String
+  leaseId        String
+  billingPeriod  String
+  amount         Decimal
+  dueDate        DateTime
+  status         RentChargeStatus @default(PENDING)
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  lease        Lease        @relation(fields: [leaseId], references: [id])
+  payments     Payment[]
+
+  @@unique([leaseId, billingPeriod])
+  @@map("rent_charges")
+}
+
+enum PaymentMethod {
+  CASH
+  CHECK
+  BANK_TRANSFER
+  CARD
+  OTHER
+}
+
+model Payment {
+  id             String        @id @default(cuid())
+  organizationId String
+  rentChargeId   String
+  amount         Decimal
+  paidAt         DateTime
+  method         PaymentMethod @default(OTHER)
+  reference      String?
+  notes          String?
+  createdAt      DateTime      @default(now())
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  rentCharge   RentCharge   @relation(fields: [rentChargeId], references: [id])
+
+  @@map("payments")
+}
+
+// ─── Maintenance ──────────────────────────────────────────────────────────────
+
+enum MaintenancePriority {
+  LOW
+  MEDIUM
+  HIGH
+  EMERGENCY
+}
+
+enum MaintenanceStatus {
+  OPEN
+  ASSIGNED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+model MaintenanceRequest {
+  id             String              @id @default(cuid())
+  organizationId String
+  propertyId     String
+  unitId         String?
+  submittedBy    String
+  assignedTo     String?
+  tenantId       String?
+  title          String
+  description    String
+  priority       MaintenancePriority @default(MEDIUM)
+  status         MaintenanceStatus   @default(OPEN)
+  completedAt    DateTime?
+  createdAt      DateTime            @default(now())
+  updatedAt      DateTime            @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  property     Property     @relation(fields: [propertyId], references: [id])
+  unit         Unit?        @relation(fields: [unitId], references: [id])
+  documents    Document[]
+  tenant       Tenant?      @relation(fields: [tenantId], references: [id])
+
+  @@map("maintenance_requests")
+}
+
+// ─── Documents ────────────────────────────────────────────────────────────────
+
+model Document {
+  id             String   @id @default(cuid())
+  organizationId String
+  resourceType   String
+  resourceId     String
+  name           String
+  storageKey     String
+  mimeType       String
+  sizeBytes      Int?
+  createdBy      String
+  createdAt      DateTime @default(now())
+
+  organization       Organization        @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  lease              Lease?              @relation(fields: [resourceId], references: [id], map: "documents_lease_fk")
+  maintenanceRequest MaintenanceRequest? @relation(fields: [resourceId], references: [id], map: "documents_maintenance_fk")
+
+  @@index([resourceType, resourceId])
+  @@map("documents")
+}
+
+// ─── Audit Log ────────────────────────────────────────────────────────────────
+
+model AuditLog {
+  id             String   @id @default(cuid())
+  organizationId String
+  actorUserId    String
+  action         String
+  resourceType   String
+  resourceId     String
+  metadata       Json?
+  requestId      String?
+  createdAt      DateTime @default(now())
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId, createdAt])
+  @@index([organizationId, resourceType, resourceId])
+  @@map("audit_logs")
+}
+
+// ─── Notifications ────────────────────────────────────────────────────────────
+
+enum NotificationStatus {
+  PENDING
+  SENT
+  FAILED
+}
+
+model Notification {
+  id             String             @id @default(cuid())
+  organizationId String
+  userId         String?
+  type           String
+  subject        String
+  body           String
+  status         NotificationStatus @default(PENDING)
+  sentAt         DateTime?
+  createdAt      DateTime           @default(now())
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@map("notifications")
+}
