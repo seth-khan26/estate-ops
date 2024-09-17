@@ -112,3 +112,7 @@ Organization
 ├── AuditLog
 └── Notification
 ```
+
+## Core Schema
+
+Models: Organization, Property, Unit, Tenant, Lease, MaintenanceRequest, Payment.
