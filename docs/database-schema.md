@@ -116,3 +116,7 @@ Organization
 ## Core Schema
 
 Models: Organization, Property, Unit, Tenant, Lease, MaintenanceRequest, Payment.
+
+## Migrations
+
+Run `npx prisma migrate dev` to apply all pending migrations.
