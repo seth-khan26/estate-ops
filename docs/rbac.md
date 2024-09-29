@@ -129,3 +129,7 @@ All API errors return `{ error: string }` with an appropriate HTTP status:
 ## What RBAC Does Not Cover
 
 RBAC cannot enforce record-level isolation. A `PROPERTY_MANAGER` has `properties.read` — but that doesn't mean they should see properties from other organizations. That guard lives entirely in the service layer (the `organizationId` filter on every query). Both layers are required; neither is sufficient alone.
+
+## Auth Integration
+
+NextAuth JWT sessions include role and organizationId.
