@@ -25,3 +25,6 @@ If you are new to the codebase, read in this order:
 3. **RBAC** — how every API route is protected
 4. **Lease Lifecycle** — the most stateful part of the domain
 5. **Payment Flow** — the most operationally critical code path
+# Local Dev
+
+`docker-compose up -d` then `npm run dev` to start the app.
