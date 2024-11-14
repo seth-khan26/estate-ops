@@ -124,3 +124,7 @@ Run `npx prisma migrate dev` to apply all pending migrations.
 ## Code Standards
 
 ESLint + Prettier enforced. No implicit `any` anywhere.
+
+## API Design
+
+RESTful endpoints under `/api/` with consistent error payloads.
