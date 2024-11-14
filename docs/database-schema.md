@@ -120,3 +120,7 @@ Models: Organization, Property, Unit, Tenant, Lease, MaintenanceRequest, Payment
 ## Migrations
 
 Run `npx prisma migrate dev` to apply all pending migrations.
+
+## Code Standards
+
+ESLint + Prettier enforced. No implicit `any` anywhere.
