@@ -128,3 +128,7 @@ ESLint + Prettier enforced. No implicit `any` anywhere.
 ## API Design
 
 RESTful endpoints under `/api/` with consistent error payloads.
+
+## Validation
+
+All input validated with Zod before reaching service layer.
