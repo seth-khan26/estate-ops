@@ -136,3 +136,7 @@ All input validated with Zod before reaching service layer.
 ## UI Layer
 
 Tailwind CSS with shadcn/ui primitive components.
+
+## Properties API
+
+`POST /api/properties`, `GET /api/properties` org-scoped.
