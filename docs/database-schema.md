@@ -140,3 +140,7 @@ Tailwind CSS with shadcn/ui primitive components.
 ## Properties API
 
 `POST /api/properties`, `GET /api/properties` org-scoped.
+
+## Unit Statuses
+
+Vacant, Occupied, Maintenance, Unavailable — with history.
