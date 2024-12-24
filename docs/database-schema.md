@@ -144,3 +144,7 @@ Tailwind CSS with shadcn/ui primitive components.
 ## Unit Statuses
 
 Vacant, Occupied, Maintenance, Unavailable — with history.
+
+## Property Types
+
+Residential, Commercial, Mixed Use — filterable in list view.
