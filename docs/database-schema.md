@@ -148,3 +148,7 @@ Vacant, Occupied, Maintenance, Unavailable — with history.
 ## Property Types
 
 Residential, Commercial, Mixed Use — filterable in list view.
+
+## Occupancy Dashboard
+
+Shows vacancy rate, avg rent, and maintenance backlog.
