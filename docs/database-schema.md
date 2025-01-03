@@ -152,3 +152,7 @@ Residential, Commercial, Mixed Use — filterable in list view.
 ## Occupancy Dashboard
 
 Shows vacancy rate, avg rent, and maintenance backlog.
+
+## Vacancy Reports
+
+`GET /api/reports/vacancy` with days-vacant metric per unit.
