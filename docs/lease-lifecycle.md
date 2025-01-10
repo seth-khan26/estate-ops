@@ -116,3 +116,7 @@ Every state transition that goes through a service function writes an audit log 
 | Terminated | `lease.terminated` |
 
 Background job transitions (`EXPIRING`, `ENDED`) do not currently write individual audit entries — they use bulk updates. For a production system, per-lease audit entries for these transitions would be added.
+
+## Tenant Profiles
+
+Tenants are domain entities independent of user accounts.
