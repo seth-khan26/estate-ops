@@ -120,3 +120,7 @@ Background job transitions (`EXPIRING`, `ENDED`) do not currently write individu
 ## Tenant Profiles
 
 Tenants are domain entities independent of user accounts.
+
+## Tenant Portal
+
+Tenants view active lease, balance, and payment schedule.
