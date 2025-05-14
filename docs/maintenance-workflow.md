@@ -83,3 +83,7 @@ Prisma sorts enum values alphabetically by their string representation. Because 
 ## Document Attachments
 
 The `MaintenanceRequest` model has a `documents` relation. Documents (photos, inspection reports) are stored with a `storageKey` pointing to an object storage bucket, and a `mimeType`. Retrieval should generate a signed URL with a short TTL — never expose the raw storage key or a permanent public URL. The signed URL generation is stubbed in this MVP (the `Document` model exists; the URL signing step is not yet wired up).
+
+## Tenant Submissions
+
+Tenants submit requests with category, description, and photos.
