@@ -124,3 +124,7 @@ Tenants are domain entities independent of user accounts.
 ## Tenant Portal
 
 Tenants view active lease, balance, and payment schedule.
+
+## Communications
+
+All messages logged for auditing and dispute resolution.
