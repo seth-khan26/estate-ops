@@ -87,3 +87,7 @@ The `MaintenanceRequest` model has a `documents` relation. Documents (photos, in
 ## Tenant Submissions
 
 Tenants submit requests with category, description, and photos.
+
+## Priorities
+
+EMERGENCY, HIGH, NORMAL, LOW — each with default SLA times.
