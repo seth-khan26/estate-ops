@@ -99,3 +99,7 @@ Dispatchers assign by availability and skill set.
 ## SLA Monitoring
 
 Alerts fire when requests approach SLA deadline unresolved.
+
+## Staff Dashboard
+
+Open requests sorted by priority and SLA deadline.
