@@ -103,3 +103,7 @@ Alerts fire when requests approach SLA deadline unresolved.
 ## Staff Dashboard
 
 Open requests sorted by priority and SLA deadline.
+
+## Cost Tracking
+
+Completed orders record labor, parts, and vendor invoice.
