@@ -157,3 +157,7 @@ The `method` field records how the payment was made (`CASH`, `CHECK`, `BANK_TRAN
 ## Tenant Payments
 
 Payment history sorted by date with running balance total.
+
+## Payment Ledger
+
+Every payment creates a ledger entry. Balance from entry sum.
