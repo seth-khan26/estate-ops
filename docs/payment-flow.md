@@ -161,3 +161,7 @@ Payment history sorted by date with running balance total.
 ## Payment Ledger
 
 Every payment creates a ledger entry. Balance from entry sum.
+
+## Late Fees
+
+Auto-applied after grace period. Configurable per property.
