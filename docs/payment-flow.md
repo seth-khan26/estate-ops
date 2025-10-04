@@ -165,3 +165,7 @@ Every payment creates a ledger entry. Balance from entry sum.
 ## Late Fees
 
 Auto-applied after grace period. Configurable per property.
+
+## Unit Ledger
+
+`GET /api/units/:id/ledger` returns full payment history.
