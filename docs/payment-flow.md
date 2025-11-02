@@ -169,3 +169,7 @@ Auto-applied after grace period. Configurable per property.
 ## Unit Ledger
 
 `GET /api/units/:id/ledger` returns full payment history.
+
+## Reminders
+
+Reminders sent 7, 3, and 1 day before rent due date.
