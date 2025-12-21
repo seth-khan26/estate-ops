@@ -173,3 +173,7 @@ Auto-applied after grace period. Configurable per property.
 ## Reminders
 
 Reminders sent 7, 3, and 1 day before rent due date.
+
+## Owner Reports
+
+Collected rent, pending amounts, and expense summaries.
