@@ -96,3 +96,7 @@ export async function doSomething(organizationId: string, resourceId: string) {
 ## Tenant Isolation
 
 `organizationId` enforced on every service-layer query.
+
+## Security Incident
+
+Unit search returned results across all orgs — missing org filter.
