@@ -100,3 +100,7 @@ export async function doSomething(organizationId: string, resourceId: string) {
 ## Security Incident
 
 Unit search returned results across all orgs — missing org filter.
+
+## Fix Applied
+
+All service methods require `organizationId` — no defaults allowed.
