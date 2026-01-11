@@ -104,3 +104,7 @@ Unit search returned results across all orgs — missing org filter.
 ## Fix Applied
 
 All service methods require `organizationId` — no defaults allowed.
+
+## Hardening
+
+Lint rule flags any query builder call missing `organizationId`.
