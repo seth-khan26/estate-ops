@@ -108,3 +108,7 @@ All service methods require `organizationId` — no defaults allowed.
 ## Hardening
 
 Lint rule flags any query builder call missing `organizationId`.
+
+## Tests
+
+Test suite verifies org-A queries never return org-B data.
