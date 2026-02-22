@@ -28,3 +28,7 @@ If you are new to the codebase, read in this order:
 # Local Dev
 
 `docker-compose up -d` then `npm run dev` to start the app.
+
+## Seed Data
+
+`npm run db:seed` creates demo org with properties and tenants.
