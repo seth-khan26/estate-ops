@@ -32,3 +32,7 @@ If you are new to the codebase, read in this order:
 ## Seed Data
 
 `npm run db:seed` creates demo org with properties and tenants.
+
+## Testing Utilities
+
+`scripts/test-lease-cycle.ts` simulates a full tenant lifecycle.
