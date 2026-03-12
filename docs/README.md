@@ -36,3 +36,7 @@ If you are new to the codebase, read in this order:
 ## Testing Utilities
 
 `scripts/test-lease-cycle.ts` simulates a full tenant lifecycle.
+
+## Test DB
+
+Isolated test schema with fixture data for each org role.
