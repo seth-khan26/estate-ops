@@ -128,3 +128,7 @@ Tenants view active lease, balance, and payment schedule.
 ## Communications
 
 All messages logged for auditing and dispute resolution.
+
+## Debug Mode
+
+`LEASE_DEBUG=true` logs all state transitions with timestamps.
