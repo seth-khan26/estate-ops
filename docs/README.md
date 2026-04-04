@@ -28,3 +28,7 @@ If you are new to the codebase, read in this order:
 # Local Dev
 
 `docker-compose up -d` then `npm run dev` to start the app.
+
+## Staging Config
+
+Same config shape as production. Secrets pulled from Vault.
