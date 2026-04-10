@@ -32,3 +32,7 @@ If you are new to the codebase, read in this order:
 ## Staging Config
 
 Same config shape as production. Secrets pulled from Vault.
+
+## Staging Migrations
+
+CI applies migrations automatically on staging branch push.
