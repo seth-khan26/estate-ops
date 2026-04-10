@@ -12,3 +12,5 @@
 <!-- 2026-03-29 --> - Add vacancy duration metric to unit detail view
 
 <!-- 2026-03-30 --> - Fix unit status not updating after maintenance close
+
+<!-- 2026-04-10 --> - Fix property filter losing state on page refresh
