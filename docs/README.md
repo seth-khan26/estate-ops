@@ -36,3 +36,7 @@ Same config shape as production. Secrets pulled from Vault.
 ## Staging Migrations
 
 CI applies migrations automatically on staging branch push.
+
+## Health Checks
+
+`/api/health` returns DB connectivity and migration status.
