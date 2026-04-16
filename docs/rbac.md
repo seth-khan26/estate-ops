@@ -133,3 +133,7 @@ RBAC cannot enforce record-level isolation. A `PROPERTY_MANAGER` has `properties
 ## Auth Integration
 
 NextAuth JWT sessions include role and organizationId.
+
+## Owner Role
+
+Property owners get read-only access scoped to their properties.
