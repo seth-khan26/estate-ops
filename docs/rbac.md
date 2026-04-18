@@ -137,3 +137,7 @@ NextAuth JWT sessions include role and organizationId.
 ## Owner Role
 
 Property owners get read-only access scoped to their properties.
+
+## Owner Dashboard
+
+Total properties, occupancy rate, and monthly collections.
