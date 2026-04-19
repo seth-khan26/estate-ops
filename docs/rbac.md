@@ -141,3 +141,7 @@ Property owners get read-only access scoped to their properties.
 ## Owner Dashboard
 
 Total properties, occupancy rate, and monthly collections.
+
+## Equity Reports
+
+Multi-owner properties show revenue split by ownership %.
