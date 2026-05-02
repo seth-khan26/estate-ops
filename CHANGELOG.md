@@ -16,3 +16,5 @@
 <!-- 2026-04-10 --> - Fix property filter losing state on page refresh
 
 <!-- 2026-04-22 --> - Improve late fee rounding to two decimal places
+
+<!-- 2026-05-02 --> - Improve error handling in rent reminder scheduler
