@@ -18,3 +18,5 @@
 <!-- 2026-04-22 --> - Improve late fee rounding to two decimal places
 
 <!-- 2026-05-02 --> - Improve error handling in rent reminder scheduler
+
+<!-- 2026-05-10 --> - Refactor unit search to use parameterized queries
