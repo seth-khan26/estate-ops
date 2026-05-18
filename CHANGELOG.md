@@ -20,3 +20,5 @@
 <!-- 2026-05-02 --> - Improve error handling in rent reminder scheduler
 
 <!-- 2026-05-10 --> - Refactor unit search to use parameterized queries
+
+<!-- 2026-05-18 --> - Refactor owner equity calculation for accuracy
