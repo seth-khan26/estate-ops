@@ -145,3 +145,7 @@ Total properties, occupancy rate, and monthly collections.
 ## Equity Reports
 
 Multi-owner properties show revenue split by ownership %.
+
+## Owner Documents
+
+Owners download monthly statements and lease summaries.
