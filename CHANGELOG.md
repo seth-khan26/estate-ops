@@ -22,3 +22,5 @@
 <!-- 2026-05-10 --> - Refactor unit search to use parameterized queries
 
 <!-- 2026-05-18 --> - Refactor owner equity calculation for accuracy
+
+<!-- 2026-05-21 --> - Add soft delete for archived property records
