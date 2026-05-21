@@ -128,3 +128,7 @@ Tenants view active lease, balance, and payment schedule.
 ## Communications
 
 All messages logged for auditing and dispute resolution.
+
+## Bug Report
+
+Lease end dates off by one day across month boundaries.
