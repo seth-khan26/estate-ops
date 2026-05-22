@@ -132,3 +132,7 @@ All messages logged for auditing and dispute resolution.
 ## Bug Report
 
 Lease end dates off by one day across month boundaries.
+
+## Fix
+
+Used `startOfDay()` to normalize dates before adding months.
