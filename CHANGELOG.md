@@ -24,3 +24,5 @@
 <!-- 2026-05-18 --> - Refactor owner equity calculation for accuracy
 
 <!-- 2026-05-21 --> - Add soft delete for archived property records
+
+<!-- 2026-06-17 --> - Improve DB query for owner portfolio overview
