@@ -28,3 +28,5 @@
 <!-- 2026-06-17 --> - Improve DB query for owner portfolio overview
 
 <!-- 2026-06-23 --> - Add keyboard navigation to maintenance work queue
+
+<!-- 2026-06-24 --> - Add audit event for manual late fee waivers
