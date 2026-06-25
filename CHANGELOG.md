@@ -32,3 +32,5 @@
 <!-- 2026-06-24 --> - Add audit event for manual late fee waivers
 
 <!-- 2026-06-24 --> - Fix email template rendering for renewal notices
+
+<!-- 2026-06-25 --> - Fix incorrect balance display for zero-payment months
