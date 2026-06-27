@@ -34,3 +34,5 @@
 <!-- 2026-06-24 --> - Fix email template rendering for renewal notices
 
 <!-- 2026-06-25 --> - Fix incorrect balance display for zero-payment months
+
+<!-- 2026-06-27 --> - Improve mobile layout for maintenance request form
