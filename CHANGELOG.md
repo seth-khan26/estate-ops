@@ -36,3 +36,5 @@
 <!-- 2026-06-25 --> - Fix incorrect balance display for zero-payment months
 
 <!-- 2026-06-27 --> - Improve mobile layout for maintenance request form
+
+<!-- 2026-07-01 --> - Refactor payment ledger service for testability
