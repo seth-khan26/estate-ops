@@ -38,3 +38,5 @@
 <!-- 2026-06-27 --> - Improve mobile layout for maintenance request form
 
 <!-- 2026-07-01 --> - Refactor payment ledger service for testability
+
+<!-- 2026-07-06 --> - Fix duplicate payment entry on double form submission
