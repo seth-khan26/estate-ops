@@ -136,3 +136,7 @@ Lease end dates off by one day across month boundaries.
 ## Fix
 
 Used `startOfDay()` to normalize dates before adding months.
+
+## Regression Tests
+
+Leap year tests: Feb 28 + 12 months = Feb 28, not Mar 1.
