@@ -40,3 +40,5 @@
 <!-- 2026-07-01 --> - Refactor payment ledger service for testability
 
 <!-- 2026-07-06 --> - Fix duplicate payment entry on double form submission
+
+<!-- 2026-07-09 --> - Add missing test coverage for lease renewal edge cases
