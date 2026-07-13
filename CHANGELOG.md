@@ -42,3 +42,5 @@
 <!-- 2026-07-06 --> - Fix duplicate payment entry on double form submission
 
 <!-- 2026-07-09 --> - Add missing test coverage for lease renewal edge cases
+
+<!-- 2026-07-13 --> - Improve owner statement PDF generation performance
