@@ -140,3 +140,7 @@ Used `startOfDay()` to normalize dates before adding months.
 ## Regression Tests
 
 Leap year tests: Feb 28 + 12 months = Feb 28, not Mar 1.
+
+## Notifications Fixed
+
+Renewal reminders fire 60 days before corrected end date.
