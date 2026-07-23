@@ -46,3 +46,5 @@
 <!-- 2026-07-13 --> - Improve owner statement PDF generation performance
 
 <!-- 2026-07-21 --> - Refactor lease lifecycle events for better tracing
+
+<!-- 2026-07-23 --> - Add missing organizationId check in report export
