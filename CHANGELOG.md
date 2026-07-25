@@ -50,3 +50,5 @@
 <!-- 2026-07-23 --> - Add missing organizationId check in report export
 
 <!-- 2026-07-23 --> - Improve occupancy dashboard loading time
+
+<!-- 2026-07-25 --> - Cache tenant lookup in maintenance assignment flow
