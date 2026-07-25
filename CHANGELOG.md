@@ -52,3 +52,5 @@
 <!-- 2026-07-23 --> - Improve occupancy dashboard loading time
 
 <!-- 2026-07-25 --> - Cache tenant lookup in maintenance assignment flow
+
+<!-- 2026-07-25 --> - Add property address validation on creation
