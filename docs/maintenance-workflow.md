@@ -87,3 +87,23 @@ The `MaintenanceRequest` model has a `documents` relation. Documents (photos, in
 ## Tenant Submissions
 
 Tenants submit requests with category, description, and photos.
+
+## Priorities
+
+EMERGENCY, HIGH, NORMAL, LOW — each with default SLA times.
+
+## Assignment
+
+Dispatchers assign by availability and skill set.
+
+## SLA Monitoring
+
+Alerts fire when requests approach SLA deadline unresolved.
+
+## Staff Dashboard
+
+Open requests sorted by priority and SLA deadline.
+
+## Cost Tracking
+
+Completed orders record labor, parts, and vendor invoice.
