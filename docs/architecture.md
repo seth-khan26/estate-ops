@@ -100,3 +100,7 @@ src/
     ├── api-helpers.ts     withAuth() middleware + response helpers
     └── cn.ts              Tailwind class merging utility
 ```
+
+## Row-Level Security
+
+RLS added as secondary guard. App-layer remains primary.

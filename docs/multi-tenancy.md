@@ -96,3 +96,19 @@ export async function doSomething(organizationId: string, resourceId: string) {
 ## Tenant Isolation
 
 `organizationId` enforced on every service-layer query.
+
+## Security Incident
+
+Unit search returned results across all orgs — missing org filter.
+
+## Fix Applied
+
+All service methods require `organizationId` — no defaults allowed.
+
+## Hardening
+
+Lint rule flags any query builder call missing `organizationId`.
+
+## Tests
+
+Test suite verifies org-A queries never return org-B data.
