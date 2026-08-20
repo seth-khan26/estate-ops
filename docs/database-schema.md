@@ -136,3 +136,23 @@ All input validated with Zod before reaching service layer.
 ## UI Layer
 
 Tailwind CSS with shadcn/ui primitive components.
+
+## Properties API
+
+`POST /api/properties`, `GET /api/properties` org-scoped.
+
+## Unit Statuses
+
+Vacant, Occupied, Maintenance, Unavailable — with history.
+
+## Property Types
+
+Residential, Commercial, Mixed Use — filterable in list view.
+
+## Occupancy Dashboard
+
+Shows vacancy rate, avg rent, and maintenance backlog.
+
+## Vacancy Reports
+
+`GET /api/reports/vacancy` with days-vacant metric per unit.
