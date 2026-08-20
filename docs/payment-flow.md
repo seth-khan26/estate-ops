@@ -157,3 +157,23 @@ The `method` field records how the payment was made (`CASH`, `CHECK`, `BANK_TRAN
 ## Tenant Payments
 
 Payment history sorted by date with running balance total.
+
+## Payment Ledger
+
+Every payment creates a ledger entry. Balance from entry sum.
+
+## Late Fees
+
+Auto-applied after grace period. Configurable per property.
+
+## Unit Ledger
+
+`GET /api/units/:id/ledger` returns full payment history.
+
+## Reminders
+
+Reminders sent 7, 3, and 1 day before rent due date.
+
+## Owner Reports
+
+Collected rent, pending amounts, and expense summaries.
