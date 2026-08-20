@@ -153,3 +153,7 @@ This is a bulk update — efficient and idempotent. Running it twice produces th
 ## Payment Method
 
 The `method` field records how the payment was made (`CASH`, `CHECK`, `BANK_TRANSFER`, `CARD`, `OTHER`). The `reference` field stores an external reference (check number, transaction ID, etc.). Neither is used to process payments — PropertyOS tracks payments, it does not process them. For online collection, a payment provider (Stripe, etc.) would record the charge externally and the webhook handler would call `recordPayment` with `method: "CARD"` and the provider's transaction ID as `reference`.
+
+## Tenant Payments
+
+Payment history sorted by date with running balance total.
